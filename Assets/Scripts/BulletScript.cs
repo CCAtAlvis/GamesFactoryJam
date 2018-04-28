@@ -7,19 +7,19 @@ public class BulletScript : MonoBehaviour
 
     private float bulletPlayerAngle;
     private float bulletPlayerDistance;
-    private GameObject player;
+    private Transform player;
     private MeshRenderer bulletRenderer;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         bulletRenderer = GetComponent<MeshRenderer>();
     }
 
     void Update()
     {
-        bulletPlayerAngle = Vector3.Angle(player.transform.forward, transform.forward);
-        bulletPlayerDistance = Mathf.Abs(Vector3.Distance(player.transform.position, transform.position));
+        bulletPlayerAngle = Vector3.Angle(player.forward, transform.forward);
+        bulletPlayerDistance = Mathf.Abs(Vector3.Distance(player.position, transform.position));
 
         if (bulletPlayerAngle <= thresholdVisiblityAngle && bulletPlayerDistance <= thresholdVisiblityDistance)
         {

@@ -13,8 +13,7 @@ public class EnemySpawnerScript : MonoBehaviour
     private int enemyKilledThisLevel = 1;
     private int enemySpawnedThisLevel = 1;
 
-    [SerializeField]
-    private float enemyKillRatio = 0.2f;
+    private float enemyKillRatio = 0.15f;
     private int[] enemyKillRatioMin;
 
     private int[] enemySpawnProbability = { 10};
@@ -46,6 +45,7 @@ public class EnemySpawnerScript : MonoBehaviour
             Transform spawnPoint = enemySpawnPoints[index].transform;
             GameObject enemyClone;
             enemyClone = Instantiate(enemyPrefab, spawnPoint.position + spawnPoint.forward * 10, spawnPoint.rotation);
+            Debug.Log("enemy spawned!");
         }
     }
 
