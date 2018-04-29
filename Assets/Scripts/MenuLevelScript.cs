@@ -4,6 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuLevelScript : MonoBehaviour {
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+        GameObject go = GameObject.FindGameObjectWithTag("GameController");
+        if (go != null)
+        {
+            Destroy(go);
+        }
+    }
+
     public void loadLevel()
     {
         StartCoroutine(LoadLevelAsync(1));

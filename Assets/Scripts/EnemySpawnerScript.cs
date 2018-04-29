@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemySpawnerScript : MonoBehaviour
 {
-    private GameObject enemyPrefab;
+    public GameObject enemyPrefab;
     private GameMamager gameManager;
 
     private GameObject[] enemySpawnPoints;
@@ -18,7 +18,7 @@ public class EnemySpawnerScript : MonoBehaviour
     private int enemyCurrentlyInLevel = 0;
 
     private float enemyKillRatio = 0.15f;
-    private int[] enemyKillRatioMin;
+    private float[] enemyKillRatioMin;
 
     private int[] enemySpawnProbability = { 10 };
     private int[] enemySpawnProbabilityMin = { 10 };
@@ -71,7 +71,7 @@ public class EnemySpawnerScript : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         // Debug.Log("in here");
-        levelNumber = level - 1;
+        levelNumber = level-1;
         enemySpawnPoints = null;
         enemySpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
 

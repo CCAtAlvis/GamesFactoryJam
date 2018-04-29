@@ -7,6 +7,9 @@ public class CameraConroller : MonoBehaviour
 
     void Update()
     {
-        transform.position = playerTransform.position + cameraPositionOffset;
+        if (playerTransform != null)
+        {
+            transform.position = playerTransform.position + cameraPositionOffset;
+        }
     }
 }
