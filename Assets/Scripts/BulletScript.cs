@@ -22,7 +22,7 @@ public class BulletScript : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        transform.position += transform.forward * Time.deltaTime;
         TTL -= Time.deltaTime;
 
         if (TTL <= 0f)

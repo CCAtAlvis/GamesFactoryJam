@@ -9,6 +9,8 @@ TagManager:
   - EnemySpawnPoint
   - Bullet
   - LightSource
+  - PlayerGun
+  - PlayerSword
   layers:
   - Default
   - TransparentFX

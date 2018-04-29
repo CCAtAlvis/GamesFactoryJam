@@ -264,8 +264,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1191887423}
-  m_LocalRotation: {x: -0.70710677, y: -1.1641531e-10, z: -2.9103828e-10, w: -0.7071068}
-  m_LocalPosition: {x: -0.6534747, y: 10.762306, z: -0.11556785}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -5.820765e-11, w: 0.7071068}
+  m_LocalPosition: {x: 3.49, y: 0.85510975, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -418,13 +418,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 3fff0c266a16c23448d85706d64cc36b, type: 2}
     - target: {fileID: 9500000, guid: 6bb4a8b5b9b60714ca3bfc1011a4b16b, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed by
-        Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
-        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tTransform
-        'mixamorig:LeftUpLeg'\n\tTransform 'mixamorig:LeftArm'\n\tand more ...\n\tFrom
-        animation clip 'Rifle Idle'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6bb4a8b5b9b60714ca3bfc1011a4b16b, type: 3}
       propertyPath: m_Name

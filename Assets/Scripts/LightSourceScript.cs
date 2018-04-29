@@ -5,7 +5,7 @@ using UnityEngine;
 public class LightSourceScript : MonoBehaviour
 {
     [SerializeField]
-    private int hitsToExplode;
+    public int hitsToExplode;
     private GameMamager gameManager;
 
     void Start()
@@ -14,9 +14,20 @@ public class LightSourceScript : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMamager>();
     }
 
+    void Update()
+    {
+        if (hitsToExplode <= 0)
+        {
+            Debug.Log("source collected");
+            gameManager.collectLightSource();
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Collider other = collision.collider;
+
         if (other.tag == "Bullet")
         {
             // Debug.Log("hit!");

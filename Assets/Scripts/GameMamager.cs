@@ -178,7 +178,7 @@ public class GameMamager : MonoBehaviour
         Debug.Log("level complete!");
         playerCont = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerContoller>();
         playerCont.isGameRunning = false;
-        playerCont.bullets += 30;
+        playerCont.addBullets(30);
         Time.timeScale = 0;
         levelNumber++;
         lightSourcesCollected = 0;

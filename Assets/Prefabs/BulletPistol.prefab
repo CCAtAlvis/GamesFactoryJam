@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebc8a33f772d184f9969f3eb923df6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 5
+  bulletSpeed: 1
   bulletDamage: 10
   TTL: 5
   thresholdVisiblityAngle: 17
