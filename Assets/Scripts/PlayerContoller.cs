@@ -5,19 +5,28 @@ public class PlayerContoller : MonoBehaviour
     public float speedMovement = 4f;
     public float speedRotation = 4f;
     public float speedMultipler = 1f;
+    public float playerLife = 100f;
     public Transform bulletSpawnPoint;
     public Transform ParentSpawn;
 
     public GameObject bulletPistol;
-    public GameObject bulletRifle;
+    private GameMamager gameManager;
 
-    // Update is called once per frame
-	void Update ()
+    private bool isPlayerDead = false;
+
+	void Update()
     {
-        // mouse button click
+        if (!isPlayerDead && playerLife <= 0f)
+        {
+            gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameMamager>();
+            isPlayerDead = true;
+            gameManager.playerDead();
+            Destroy(gameObject);
+        }
+
         if (Input.GetButtonUp("Fire1"))
         {
-            Instantiate(bulletPistol, bulletSpawnPoint.position + bulletSpawnPoint.forward, bulletSpawnPoint.rotation, ParentSpawn);
+            Instantiate(bulletPistol, bulletSpawnPoint.position + bulletSpawnPoint.forward, bulletSpawnPoint.rotation);
         }
 
         // movement: forward

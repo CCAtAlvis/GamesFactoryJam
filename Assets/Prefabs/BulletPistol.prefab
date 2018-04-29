@@ -23,11 +23,10 @@ GameObject:
   - component: {fileID: 65723964217760180}
   - component: {fileID: 23719180451561740}
   - component: {fileID: 54864449745742328}
-  - component: {fileID: 114697038718058802}
-  - component: {fileID: 114232807530889180}
+  - component: {fileID: 114917645020848516}
   m_Layer: 0
   m_Name: BulletPistol
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +112,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114232807530889180
+--- !u!114 &114917645020848516
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,19 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebc8a33f772d184f9969f3eb923df6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdVisiblityAngle: 17
-  thresholdVisiblityDistance: 17
---- !u!114 &114697038718058802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1601773623069372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f7a3394af11ce46ab331279a484659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   bulletSpeed: 5
   bulletDamage: 10
   TTL: 5
+  thresholdVisiblityAngle: 17
+  thresholdVisiblityDistance: 17
