@@ -47,4 +47,10 @@ public class PlayerContoller : MonoBehaviour
     {
         gunCont.bullets += 30;
     }
+
+    public void addHealth(int count)
+    {
+        playerLife += count;
+        playerLifeMax += count;
+    }
 }

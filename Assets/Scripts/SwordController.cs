@@ -23,16 +23,16 @@ public class SwordController : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Length)
             {
-                Debug.Log(hitColliders[i].tag);
+                // Debug.Log(hitColliders[i].tag);
                 switch(hitColliders[i].tag)
                 {
+                    case "Enemy":
+                        hitColliders[i].GetComponent<EnemyController>().enemyLife -= hitDamage;
+                        break;
+
                     case "LightSource":
                         LightSourceScript LSS = hitColliders[i].GetComponentInChildren<LightSourceScript>();
                         LSS.hitsToExplode--;
-                        break;
-
-                    case "Enemy":
-                        hitColliders[i].GetComponent<EnemyController>().enemyLife -= hitDamage;
                         break;
                 }
                 i++;

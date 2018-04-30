@@ -18,7 +18,7 @@ public class LightSourceScript : MonoBehaviour
     {
         if (hitsToExplode <= 0)
         {
-            Debug.Log("source collected");
+            // Debug.Log("source collected");
             gameManager.collectLightSource();
             Destroy(gameObject);
         }
@@ -36,7 +36,7 @@ public class LightSourceScript : MonoBehaviour
 
         if (hitsToExplode <= 0)
         {
-            Debug.Log("source collected");
+            // Debug.Log("source collected");
             gameManager.collectLightSource();
             Destroy(gameObject);
         }

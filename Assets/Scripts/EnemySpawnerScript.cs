@@ -9,24 +9,24 @@ public class EnemySpawnerScript : MonoBehaviour
     private GameObject[] enemySpawnPoints;
     private GameObject[] enemies;
 
-    private int enemyKilledTotal = 0;
-    private int enemySpawnedTotal = 0;
-    private float killRatioTotal = 1;
+    [SerializeField]
+    public int enemyKilledThisLevel;
+    [SerializeField]
+    public int enemySpawnedThisLevel;
+    [SerializeField]
+    public int enemyCurrentlyInLevel;
+    [SerializeField]
+    public float enemyKillRatio;
+    private float[] enemyKillRatioMin = { 0.1f, 0.14f, 0.17f, 0.2f, 0.25f, 0.3f, 0.36f, 0.43f, 0.50f };
 
-    private int enemyKilledThisLevel = 1;
-    private int enemySpawnedThisLevel = 1;
-    private int enemyCurrentlyInLevel = 0;
+    private int[] enemySpawnProbability = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+    private int[] enemySpawnProbabilityMin = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+    private int[] enemyLifeMax = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+    private int[] enemyDamageMax = { 10, 13, 16, 20, 25, 30, 36, 43, 50};
+    private int[] enemyPresentMax = { 10, 10, 13, 16, 20, 22, 25, 27, 30};
 
-    private float enemyKillRatio = 0.15f;
-    private float[] enemyKillRatioMin;
-
-    private int[] enemySpawnProbability = { 10 };
-    private int[] enemySpawnProbabilityMin = { 10 };
-    private int[] enemyLifeMin = { 10 };
-    private int[] enemyDamageMin = { 10 };
-    private int[] enemyMaxPresent = { 10 };
-
-    private int levelNumber;
+    [SerializeField]
+    private int levelNumber = 0;
     private float probabilityOfSpawning;
 
     void Awake()
@@ -40,16 +40,20 @@ public class EnemySpawnerScript : MonoBehaviour
     void Start()
     {
         InvokeRepeating("spawnEnemy", 1f, 0.1f);
-    }
+        enemyKillRatio = 0.15f;
+        enemyKilledThisLevel = 1;
+        enemySpawnedThisLevel = 1;
+        enemyCurrentlyInLevel = 0;
+}
 
     void spawnEnemy()
     {
-        if (enemyCurrentlyInLevel > enemyMaxPresent[levelNumber])
+        if (enemyCurrentlyInLevel >= enemyPresentMax[levelNumber])
             return;
 
-        probabilityOfSpawning = enemySpawnProbabilityMin[levelNumber] * Random.Range(0.1f, 1.0f) / enemyKillRatio;
+        probabilityOfSpawning = enemySpawnProbabilityMin[levelNumber] * Random.Range(0.01f, 0.5f) / enemyKillRatio;
 
-        if (probabilityOfSpawning < enemySpawnProbability[levelNumber])
+        if (probabilityOfSpawning <= enemySpawnProbability[levelNumber])
         {
             int index = Random.Range(0, enemySpawnPoints.Length);
             Transform spawnPoint = enemySpawnPoints[index].transform;
@@ -58,36 +62,43 @@ public class EnemySpawnerScript : MonoBehaviour
 
             EnemyController enemyController;
             enemyController = enemyClone.GetComponent<EnemyController>();
-            enemyController.enemyLife = enemyLifeMin[levelNumber] * enemyKillRatio;
-            enemyController.enemyHitDamag = enemyDamageMin[levelNumber] * enemyKillRatio;
+            enemyController.enemyLife = enemyLifeMax[levelNumber] * enemyKillRatio;
+            enemyController.enemyHitDamag = enemyDamageMax[levelNumber] * enemyKillRatio;
 
             // Debug.Log("enemy spawned!");
             enemyCurrentlyInLevel++;
             enemySpawnedThisLevel++;
-            enemySpawnedTotal++;
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    public void changeLevel(int level)
     {
-        // Debug.Log("in here");
-        levelNumber = level-1;
+        Debug.Log("level changed, new lvl: "+level.ToString());
+        levelNumber = level;
         enemySpawnPoints = null;
         enemySpawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
 
         enemyKillRatio = (float)enemyKilledThisLevel / enemySpawnedThisLevel;
-        enemyKilledThisLevel = 1;
+        Debug.Log(enemyKilledThisLevel);
+        enemyKilledThisLevel = 0;
         enemySpawnedThisLevel = 1;
+        enemyCurrentlyInLevel = 0;
 
-        killRatioTotal = (float)enemyKilledTotal / enemySpawnedTotal;
+        if (enemyKillRatio < enemyKillRatioMin[level])
+            enemyKillRatio = enemyKillRatioMin[level];
     }
 
     public void enemyDead()
     {
-        // Debug.Log("here");
+        Debug.Log("here");
+        changeStats();
+    }
+
+    void changeStats()
+    {
         enemyKilledThisLevel++;
-        enemyKilledTotal++;
         enemyCurrentlyInLevel--;
+        Debug.Log(enemyCurrentlyInLevel);
     }
 
     public int getEnemyKill()

@@ -26,8 +26,9 @@ public class GunController : MonoBehaviour
         if (Input.GetButtonUp("Fire1") && bullets > 0)
         {
             bullets--;
-            bulletDisplay.text = "Bullets: " + bullets.ToString();
             Instantiate(bulletPistol, bulletSpawnPoint.position + bulletSpawnPoint.forward, bulletSpawnPoint.rotation);
         }
+
+        bulletDisplay.text = "Bullets: " + bullets.ToString();
     }
 }

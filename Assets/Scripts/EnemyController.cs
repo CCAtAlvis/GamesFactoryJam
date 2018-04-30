@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
 
         if (enemyLife <= 0f)
         {
-            Debug.Log("enemy killed!");
+            // Debug.Log("enemy killed!");
             gameManager.enemyKilled();
             Destroy(gameObject);
         }
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
 
         if (enemyLife <= 0f)
         {
-            Debug.Log("enemy killed!");
+            // Debug.Log("enemy killed!");
             gameManager.enemyKilled();
             Destroy(gameObject);
         }
@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
 
         if (distance < enemyHitDistance)
         {
-            Debug.Log("player hit!");
+            // Debug.Log("player hit!");
             playerCharacter.GetComponent<PlayerContoller>().playerLife -= enemyHitDamag;
         }
     }
