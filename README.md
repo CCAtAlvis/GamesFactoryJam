@@ -15,3 +15,4 @@ But more evil you eliminate, more the darkness grows.
 
 ### Build
 Get the build [here](https://github.com/CCAtAlvis/GamesFactoryJam/releases/tag/v1.0.0)
+Or at [itch.io](https://ccatalvis.itch.io/trapped)
